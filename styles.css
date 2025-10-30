@@ -6,3 +6,255 @@ available in the app when your plugin is enabled.
 If your plugin does not need CSS, delete this file.
 
 */
+
+/* KPI tiles (global) */
+.bases-stats-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.bases-stats-tile {
+  background: var(--background-secondary);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--radius-m);
+  padding: 10px 12px;
+}
+.bases-stats-tile-value {
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+.bases-stats-tile-label {
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* Group header */
+.bases-stats-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+/* Table layout (polish) */
+.bases-stats-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.bases-stats-table thead th {
+  text-align: left;
+  font-weight: 600;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--background-modifier-border);
+  padding: 6px 8px;
+}
+.bases-stats-table tbody td {
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--background-modifier-border);
+}
+.bases-stats-table tfoot td {
+  padding: 6px 8px;
+  font-weight: 600;
+}
+
+/* Dashboard tiles grid */
+.bases-stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.bases-stats-card { background: var(--background-primary); border: 1px solid var(--background-modifier-border); border-radius: 12px; padding: 12px 14px; box-shadow: var(--shadow-s, none); overflow: hidden; }
+.bases-stats-kpis {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0,1fr));
+  gap: 8px;
+  margin-top: 6px;
+}
+/* KPI columns layout */
+.bases-stats-kpis-grid { grid-template-columns: 1fr; gap: 10px; margin-top: 8px; margin-bottom: 8px; min-width: 0; }
+.bases-stats-kpis-grid .bases-stats-kpi { background: transparent; border: 0; padding: 0; }
+.bases-stats-kpis-grid .bases-stats-kpi-values { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, max-content)); gap: 8px; grid-auto-flow: row; }
+.bases-stats-kpis-grid .bases-stats-kpi-cell { background: var(--background-secondary); border: 1px solid var(--background-modifier-border); border-radius: 8px; padding: 6px 8px; min-width: 0; }
+.bases-stats-kpis-grid .bases-stats-kpi-cell-value { white-space: nowrap; }
+.bases-stats-kpis-grid .bases-stats-kpi-cell-title { font-size: 10px; letter-spacing: .2px; opacity: .75; }
+.bases-stats-kpis-grid .bases-stats-kpi-cell-value { font-weight: 700; font-variant-numeric: tabular-nums; }
+.bases-stats-kpi { display: flex; flex-direction: column; gap: 6px; }
+.bases-stats-kpi-values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; align-items: baseline; }
+.bases-stats-kpi-values .bases-stats-kpi-value { font-variant-numeric: tabular-nums; color: var(--text-normal); }
+.bases-stats-kpi-cell { display: flex; flex-direction: column; gap: 2px; }
+.bases-stats-kpi-cell-title { font-size: 10px; letter-spacing: .2px; opacity: .75; }
+.bases-stats-kpi-cell-value { font-weight: 700; font-variant-numeric: tabular-nums; }
+.bases-stats-kpi {
+  background: var(--background-secondary);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 8px;
+  padding: 6px 8px;
+}
+.bases-stats-kpi-label {
+  opacity: .8;
+  font-size: 11px;
+}
+.bases-stats-kpi-value {
+  font-weight: 700;
+}
+.bases-stats-summary { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; margin-top: 8px; }
+.bases-stats-summary-row { display: block; }
+.bases-stats-summary-row.is-list-row { grid-column: 1 / -1; }
+.bases-stats-summary-chart { margin: 6px 0 2px; display: flex; align-items: center; justify-content: center; }
+.bases-stats-summary-label { display: block; opacity: .85; font-weight: 600; font-size: 12px; letter-spacing: .2px; margin-bottom: 6px; }
+.bases-stats-summary-chips { display: flex; flex-direction: column; gap: 8px; width: 100%; }
+
+/* Summary v2 items */
+.bases-stats-summary-item {
+  display: grid;
+  grid-template-areas:
+    "label value"
+    "bar   percent";
+  grid-template-columns: 1fr auto; /* label flexes; right rail fixed by content */
+  row-gap: 8px;
+  column-gap: 12px;
+  width: 100%;
+  padding: 10px 12px;
+}
+.bases-stats-summary-item .bases-stats-chip-label {
+  grid-area: label;
+  max-width: 100%;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-height: 1.3;
+  word-break: break-word;
+}
+.bases-stats-summary-item .bases-stats-chip-value { grid-area: value; width: 6ch; text-align: right; font-weight: 700; }
+.bases-stats-chip-percent { grid-area: percent; width: 5ch; text-align: right; opacity: .8; font-size: 11px; white-space: nowrap; }
+.bases-stats-summary-item .bases-stats-chip-progress { grid-area: bar; width: 100%; height: 6px; }
+
+/* Sum badge */
+.bases-stats-summary-item.is-sum { grid-template-columns: auto 1fr; }
+.bases-stats-summary-item.is-sum .bases-stats-chip-badge {
+  font-size: 11px; letter-spacing: .2px; opacity: .85;
+  background: var(--background-secondary);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 999px; padding: 2px 8px;
+}
+.bases-stats-summary-item.is-sum .bases-stats-chip-value { font-size: 14px; font-weight: 700; justify-self: end; }
+.bases-stats-card-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
+/* Stronger, explicit targeting to beat theme headings */
+.bases-stats-card .bases-stats-card-head > .bases-stats-card-title { margin: 0; }
+.bases-stats-card .bases-stats-card-head > .bases-stats-card-title .bases-stats-card-title-text { font-size: 20px !important; font-weight: 700 !important; letter-spacing: .2px; line-height: 1.3; }
+.bases-stats-card .bases-stats-card-head > .bases-stats-card-title .bases-stats-card-title-text .internal-link { font-size: 20px !important; font-weight: 700 !important; line-height: 1.3; text-decoration: none; border-bottom: 1px solid transparent; }
+.bases-stats-card .bases-stats-card-head > .bases-stats-card-title .bases-stats-card-title-text .internal-link:hover { border-bottom-color: var(--interactive-accent); }
+.bases-stats-card .bases-stats-card-head > .bases-stats-card-title .bases-stats-card-title-text .internal-link:focus-visible { outline: 2px solid var(--interactive-accent); border-radius: 4px; }
+.bases-stats-card-count {
+  background: var(--background-modifier-border);
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-weight: 700;
+  line-height: 1.6;
+}
+.bases-stats-card-count {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+/* Separator between sections in tile */
+.bases-stats-sep { height: 1px; background: var(--background-modifier-border); margin: 8px 0; opacity: .6; }
+
+/* Files list under tiles */
+.bases-stats-files {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 6px;
+}
+.bases-stats-files-more { margin-top: 8px; }
+.bases-stats-file-row { display: flex; align-items: center; gap: 12px; padding: 8px 10px; border-radius: 6px; line-height: 1.4; border-bottom: 1px solid var(--background-modifier-border); }
+.bases-stats-file-row:last-child { border-bottom: none; }
+.bases-stats-file-row:hover { background: var(--background-modifier-hover); }
+.bases-stats-file-left { display:flex; flex-direction: column; gap:6px; }
+.bases-stats-file-dot { font-size: 10px; opacity: .6; line-height: 1; position: relative; top: 1px; }
+.bases-stats-file { font-weight: 600; line-height: 1.35; }
+.bases-stats-file-chips { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
+.bases-stats-file-chip { display: inline-flex; align-items: center; gap: 6px; background: var(--background-secondary); border: 1px solid var(--background-modifier-border); border-radius: 7px; padding: 3px 8px; line-height: 1.2; }
+.bases-stats-file-chip-label { opacity: .7; font-size: 10px; letter-spacing: .2px; }
+.bases-stats-file-chip-value { font-weight: 650; font-size: 12px; font-variant-numeric: tabular-nums; }
+.bases-stats-file-chip .is-empty { opacity: .7; font-style: italic; }
+.bases-stats-file-chip.is-null, .bases-stats-file-chip .is-null { border-style: dashed; opacity: .75; }
+/* emphasize numeric words chips */
+.bases-stats-file-chip[data-pid*="words"] .bases-stats-file-chip-value { font-size: 13px; }
+
+/* Chips */
+.bases-stats-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.bases-stats-chip { display: inline-flex; align-items: center; gap: 8px; background: var(--background-secondary); border: 1px solid var(--background-modifier-border); border-radius: 8px; padding: 4px 10px; transition: background .15s ease, border-color .15s ease; line-height: 1.2; }
+.bases-stats-chip:hover { background: var(--background-modifier-hover); border-color: var(--background-modifier-border-hover, var(--background-modifier-border)); }
+.bases-stats-chip-progress { position: relative; width: 110px; height: 4px; background: var(--background-modifier-border); border-radius: 4px; overflow: hidden; }
+.bases-stats-chip-progress-fill { position: absolute; left: 0; top: 0; bottom: 0; background: var(--interactive-accent); }
+.bases-stats-chip-progress-fill.level-low { background: color-mix(in oklab, var(--interactive-accent) 45%, transparent); }
+.bases-stats-chip-progress-fill.level-mid { background: color-mix(in oklab, var(--interactive-accent) 70%, transparent); }
+.bases-stats-chip-progress-fill.level-high { background: var(--interactive-accent); }
+.bases-stats-chip-percent.level-low { opacity: .7; }
+.bases-stats-chip-percent.level-mid { opacity: .85; }
+.bases-stats-chip-percent.level-high { opacity: 1; font-weight: 700; }
+.bases-stats-chip-chevron { display:inline-block; transform: rotate(0deg); transition: transform .15s ease; margin-right: 4px; opacity: .8; }
+.bases-stats-chip-chevron.is-open { transform: rotate(90deg); }
+.bases-stats-chip-details { margin-top: 6px; }
+.bases-stats-chip-label { opacity: .8; font-size: 11px; letter-spacing: .2px; }
+.bases-stats-chip-value { font-weight: 650; font-variant-numeric: tabular-nums; }
+
+/* Force summary items to use grid layout (overrides generic chip inline-flex) */
+.bases-stats-chip.bases-stats-summary-item {
+  display: grid !important;
+  grid-template-areas:
+    "label value"
+    "bar   percent";
+  grid-template-columns: 1fr auto;
+  row-gap: 8px;
+  column-gap: 12px;
+  width: 100%;
+  padding: 10px 12px;
+}
+.bases-stats-chip.bases-stats-summary-item .bases-stats-chip-label {
+  grid-area: label;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+.bases-stats-chip-badge {
+  display: inline-block;
+  margin-right: 6px;
+  padding: 1px 6px;
+  font-size: 10px;
+  letter-spacing: .2px;
+  opacity: .85;
+  background: var(--background-secondary);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 999px;
+}
+.bases-stats-chip-primary {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-clamp: 2;
+  overflow: hidden;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+.bases-stats-chip-primary .internal-link { font-size: 14px; font-weight: 700; line-height: 1.3; }
+.bases-stats-chip.bases-stats-summary-item .bases-stats-chip-value { grid-area: value; width: 6ch; text-align: right; font-weight: 700; align-self: center; }
+.bases-stats-chip.bases-stats-summary-item .bases-stats-chip-progress { grid-area: bar; width: 100%; height: 6px; }
+.bases-stats-chip.bases-stats-summary-item .bases-stats-chip-percent { grid-area: percent; width: 5ch; text-align: right; opacity: .8; font-size: 11px; white-space: nowrap; align-self: center; }
+
+/* Per-pid glyphs (subtle) */
+.bases-stats-chip[data-pid*="pov"] .bases-stats-chip-label::before,
+.bases-stats-file-chip[data-pid*="pov"] .bases-stats-file-chip-label::before { content: '👤'; margin-right: 4px; opacity: .8; }
+.bases-stats-chip[data-pid*="words"] .bases-stats-chip-label::before,
+.bases-stats-file-chip[data-pid*="words"] .bases-stats-file-chip-label::before { content: '#'; margin-right: 4px; opacity: .7; }
